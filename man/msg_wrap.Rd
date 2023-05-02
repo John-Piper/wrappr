@@ -10,11 +10,12 @@ msg_wrap(
   before_func_msg = "",
   after_func_msg = "",
   print_func = print,
-  use_msg = "both"
+  use_msg = "both",
+  print_return_var = FALSE
 )
 }
 \arguments{
-\item{func}{function}
+\item{func}{function.}
 
 \item{...}{Additional arguments to be passed to the param func.}
 
@@ -22,9 +23,11 @@ msg_wrap(
 
 \item{after_func_msg}{character.}
 
-\item{print_func}{function the default is print.  Can use related function like message.}
+\item{print_func}{function.  The default is print.  Can use related function like message.}
 
-\item{use_msg}{character.  Selects which messages to print in the function.  Use \code{before}, \code{after} or \code{both}.}
+\item{use_msg}{character.  The default is "both".  Selects which messages to print in the function.  Use \code{before}, \code{after}, \code{both} or \code{none}.}
+
+\item{print_return_var}{boolean.  The default is FALSE.  Prints the output from the called func using the print argument from param print_func.}
 }
 \value{
 Unknown.  The return type from the param func.
@@ -56,4 +59,16 @@ answer_na_removed <- msg_wrap(
                               before_func_msg = "Sum with na.rm set to TRUE",
                               use_msg = "before"
                               )
+
+# printing the return value from func using an anonymous function after the before message
+
+numbers_to_sum <- c(10,20,30)
+
+msg_wrap((function(x) sum(x[x\%\%2 == 1])),
+         x = numbers_to_sum,
+         before_func_msg = "Result from sum of odd numbers",
+         use_msg = "before",
+         print_return_var = FALSE
+         )
+
 }

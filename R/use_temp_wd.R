@@ -9,31 +9,39 @@
 #' @export
 #'
 #' @examples
-use_temp_wd <- function(temp_cwd, 
-                        func, 
-                        ..., 
+#' \dontrun{
+#'
+#' # open a csv file using a temp working directory
+#' temp_wd <- "example/folder/address/to/change"
+#'
+#' get_data <- use_temp_wd(temp_wd, read.csv, file = "file.csv")
+#'
+#' }
+use_temp_wd <- function(temp_cwd,
+                        func,
+                        ...,
                         err_msg = "An error has occured in the function use_temp_wd") {
-  
+
   current_wd <- getwd()
-  
+
   tryCatch({
-    
+
     setwd(temp_cwd)
-    
+
     return_var <- func(...)
-    
+
   }, error = function(e) {
-    
+
     warning(e)
-    
+
     setwd(current_wd)
-    
+
     stop(err_msg)
-    
+
   })
-  
+
   setwd(current_wd)
-  
+
   return_var
-  
+
 }

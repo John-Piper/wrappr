@@ -4,25 +4,44 @@
 \alias{get_cache_or_create}
 \title{checks if variable exists in enviroment and returns back or creates a new variable}
 \usage{
-get_cache_or_create(
-  var,
-  func,
-  ...,
-  err_msg = "An error has occured in the function get_cache_or_create"
-)
+get_cache_or_create(var, func, ..., warning_msg = NA_character_)
 }
 \arguments{
-\item{var}{character.  The name of the variable to check in the global enviroment.}
+\item{var}{character.  The name of the variable to check in the global environment.}
 
 \item{func}{function.  A function that returns a value.}
 
 \item{...}{Additional arguments to be passed to the param func.}
 
-\item{err_msg}{character.  Message sent to stop function if an error occurs.}
+\item{warning_msg}{character.  Message sent to stop function if an error occurs.}
 }
 \value{
 Unknown.  The return type from the param func or the existing variable in global enviroment.
 }
 \description{
 checks if variable exists in enviroment and returns back or creates a new variable
+}
+\examples{
+
+# A simple created dataframe with 2 columns
+
+df <- data.frame(col_1 = c("a","b","c"), col_2 = c(1,2,3))
+
+# check if the variable `df` is already created and return the current value
+# in the variable saved in the global environment or create an empty data frame
+
+
+
+df <- get_cache_or_create(
+                          "df",
+                          function() data.frame(col_1 = NA_Character_, col_2 = NA_integer_)
+                          )
+
+# same check for df_2.  empty data frame returned because df_2 is not in global environment
+
+df_2 <- get_cache_or_create(
+                          "df_2",
+                          function() data.frame(col_1 = NA_character_, col_2 = NA_integer_)
+                          )
+
 }

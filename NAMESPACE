@@ -2,4 +2,4 @@
 
 export(get_cache_or_create)
 export(msg_wrap)
-export(use_temp_wd)
+export(set_temp_wd)

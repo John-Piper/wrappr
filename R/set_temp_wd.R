@@ -14,10 +14,10 @@
 #' # open a csv file using a temp working directory
 #' temp_wd <- "example/folder/address/to/change"
 #'
-#' get_data <- use_temp_wd(temp_wd, read.csv, file = "file.csv")
+#' get_data <- set_temp_wd(temp_wd, read.csv, file = "file.csv")
 #'
 #' }
-use_temp_wd <- function(temp_cwd,
+set_temp_wd <- function(temp_cwd,
                         func,
                         ...,
                         err_msg = "An error has occured in the function use_temp_wd") {

@@ -30,7 +30,7 @@ test_that("Expect the working directory to be the same from before and after the
 
   setwd(cwd_before_tests)
 
-  return_value_from_wrappr_call <- wrappr::use_temp_wd(
+  return_value_from_wrappr_call <- wrappr::set_temp_wd(
                                                       temp_cwd = test_working_directory,
                                                       func = read.csv,
                                                       file = file_name_to_load_in_test_folder_comma_sep_with_header,
@@ -52,7 +52,7 @@ test_that("Expect the working directory to be the same from before and after the
 
 test_that("The different arguments for dot dot dot (...) work as expected.", {
 
-  return_value_from_wrappr_call <- wrappr::use_temp_wd(
+  return_value_from_wrappr_call <- wrappr::set_temp_wd(
     temp_cwd = test_working_directory,
     func = read.csv,
     file = file_name_to_load_in_test_folder_not_comma_sep_without_header,
@@ -71,7 +71,7 @@ test_that("The different arguments for dot dot dot (...) work as expected.", {
 test_that("Expect no errors when running the wrapper function.", {
 
   expect_no_error(
-    wrappr::use_temp_wd(
+    wrappr::set_temp_wd(
                       temp_cwd = test_working_directory,
                       func = read.delim,
                       file = file_name_to_load_in_test_folder_comma_sep_with_header,
@@ -79,5 +79,14 @@ test_that("Expect no errors when running the wrapper function.", {
                       fileEncoding = "UTF-8-BOM"
                       )
     )
+
+})
+
+
+test_that("Expect error when in valid file path passed into function", {
+
+  expect_error(wrappr::set_temp_wd(temp_cwd = "folder/path/does/not/exist",
+                                   func = read.csv,
+                                   file = file_name_to_load_in_test_folder_comma_sep_with_header))
 
 })

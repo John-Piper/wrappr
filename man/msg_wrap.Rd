@@ -2,7 +2,7 @@
 % Please edit documentation in R/msg_wrap.R
 \name{msg_wrap}
 \alias{msg_wrap}
-\title{Wraps a message before and after a function}
+\title{Wraps a message before and/or after a function}
 \usage{
 msg_wrap(
   func,
@@ -33,7 +33,7 @@ msg_wrap(
 Unknown.  The return type from the param func.
 }
 \description{
-Wraps a message before and after a function
+Wraps a message before and/or after a function
 }
 \examples{
 

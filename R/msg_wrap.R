@@ -1,4 +1,4 @@
-#' Wraps a message before and after a function
+#' Wraps a message before and/or after a function
 #'
 #' @param func function.
 #' @param ... Additional arguments to be passed to the param func.

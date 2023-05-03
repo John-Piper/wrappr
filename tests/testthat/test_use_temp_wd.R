@@ -1,9 +1,9 @@
 library("wrappr")
 
 
-##################
-# Variable setup #
-##################
+###############
+# Tests setup #
+###############
 
 
 cwd_before_tests <- getwd()
@@ -19,16 +19,12 @@ test_one_expected_df <- data.frame(Index = 1:5, Name = c("A", "B", "C", "D", "E"
 test_two_expected_df <- data.frame(Col1 = 1:5, Col2 = c("A", "B", "C", "D", "E"), Col3 = c(23,60,34,56,84))
 
 
-
-
-
 #--------------------------------------------------------------------------------------------------------------------------------
 
 
-############
-# test One #
-############
-
+#########
+# Tests #
+#########
 
 test_that("Expect the working directory to be the same from before and after the wrapper function and expected df is returned.", {
 
@@ -54,8 +50,6 @@ test_that("Expect the working directory to be the same from before and after the
 })
 
 
-
-
 test_that("The different arguments for dot dot dot (...) work as expected.", {
 
   return_value_from_wrappr_call <- wrappr::use_temp_wd(
@@ -70,10 +64,6 @@ test_that("The different arguments for dot dot dot (...) work as expected.", {
   expect_s3_class(return_value_from_wrappr_call, "data.frame")
 
   expect_equal(return_value_from_wrappr_call, test_two_expected_df)
-
-
-
-
 
 })
 

@@ -35,10 +35,11 @@ get_cache_or_create <- function(
                                 var,
                                 func,
                                 ...,
+                                envir_arg = .GlobalEnv,
                                 warning_msg = NA_character_
                                 ) {
 
-  if (!exists(var)) {
+  if (!exists(var, envir= envir_arg)) {
 
     tryCatch({
 
@@ -59,7 +60,7 @@ get_cache_or_create <- function(
 
   } else {
 
-    return_var <- get(var)
+    return_var <- get(var, envir = envir_arg)
 
   }
 

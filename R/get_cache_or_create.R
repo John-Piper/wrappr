@@ -3,6 +3,7 @@
 #' @param var character.  The name of the variable to check in the global environment.
 #' @param func function.  A function that returns a value.
 #' @param ... Additional arguments to be passed to the param func.
+#' @param envir_arg.  Specify an environment to look in to check and collect objects.
 #' @param warning_msg character.  Message sent to stop function if an error occurs.
 #'
 #' @return Unknown.  The return type from the param func or the existing variable in global enviroment.
@@ -53,7 +54,7 @@ get_cache_or_create <- function(
 
       }
 
-      stop(e$message)
+      stop(e$message, call. = FALSE)
 
     }
     )

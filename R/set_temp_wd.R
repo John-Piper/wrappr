@@ -36,7 +36,7 @@ set_temp_wd <- function(temp_cwd,
 
     setwd(current_wd)
 
-    stop(err_msg)
+    stop(err_msg, call. = FALSE)
 
   })
 

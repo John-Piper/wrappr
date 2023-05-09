@@ -4,7 +4,13 @@
 \alias{get_cache_or_create}
 \title{checks if variable exists in enviroment and returns back or creates a new variable}
 \usage{
-get_cache_or_create(var, func, ..., warning_msg = NA_character_)
+get_cache_or_create(
+  var,
+  func,
+  ...,
+  envir_arg = .GlobalEnv,
+  warning_msg = NA_character_
+)
 }
 \arguments{
 \item{var}{character.  The name of the variable to check in the global environment.}
@@ -14,6 +20,8 @@ get_cache_or_create(var, func, ..., warning_msg = NA_character_)
 \item{...}{Additional arguments to be passed to the param func.}
 
 \item{warning_msg}{character.  Message sent to stop function if an error occurs.}
+
+\item{envir_arg.}{Specify an environment to look in to check and collect objects.}
 }
 \value{
 Unknown.  The return type from the param func or the existing variable in global enviroment.

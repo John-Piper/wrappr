@@ -1,3 +1,8 @@
 ^wrappr\.Rproj$
 ^\.Rproj\.user$
+^\.github$
+^README\.Rmd$
 ^LICENSE\.md$
+^cran-comments\.md$
+^CRAN-SUBMISSION$
+^codecov\.yml$

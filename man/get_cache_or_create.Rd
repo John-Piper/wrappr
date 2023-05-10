@@ -19,9 +19,9 @@ get_cache_or_create(
 
 \item{...}{Additional arguments to be passed to the param func.}
 
-\item{warning_msg}{character.  Message sent to stop function if an error occurs.}
+\item{envir_arg}{environment.  Specify an environment to look in to check and collect objects.}
 
-\item{envir_arg.}{Specify an environment to look in to check and collect objects.}
+\item{warning_msg}{character.  Message sent to stop function if an error occurs.}
 }
 \value{
 Unknown.  The return type from the param func or the existing variable in global enviroment.
@@ -31,14 +31,12 @@ checks if variable exists in enviroment and returns back or creates a new variab
 }
 \examples{
 
-# A simple created dataframe with 2 columns
+# A simple created data.frame with 2 columns
 
 df <- data.frame(col_1 = c("a","b","c"), col_2 = c(1,2,3))
 
 # check if the variable `df` is already created and return the current value
 # in the variable saved in the global environment or create an empty data frame
-
-
 
 df <- get_cache_or_create(
                           "df",

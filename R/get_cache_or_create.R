@@ -3,7 +3,7 @@
 #' @param var character.  The name of the variable to check in the global environment.
 #' @param func function.  A function that returns a value.
 #' @param ... Additional arguments to be passed to the param func.
-#' @param envir_arg.  Specify an environment to look in to check and collect objects.
+#' @param envir_arg environment.  Specify an environment to look in to check and collect objects.
 #' @param warning_msg character.  Message sent to stop function if an error occurs.
 #'
 #' @return Unknown.  The return type from the param func or the existing variable in global enviroment.
@@ -11,14 +11,12 @@
 #'
 #' @examples
 #'
-#' # A simple created dataframe with 2 columns
+#' # A simple created data.frame with 2 columns
 #'
 #' df <- data.frame(col_1 = c("a","b","c"), col_2 = c(1,2,3))
 #'
 #' # check if the variable `df` is already created and return the current value
 #' # in the variable saved in the global environment or create an empty data frame
-#'
-#'
 #'
 #' df <- get_cache_or_create(
 #'                           "df",
@@ -40,7 +38,7 @@ get_cache_or_create <- function(
                                 warning_msg = NA_character_
                                 ) {
 
-  if (!exists(var, envir= envir_arg)) {
+  if (!exists(var, envir = envir_arg)) {
 
     tryCatch({
 

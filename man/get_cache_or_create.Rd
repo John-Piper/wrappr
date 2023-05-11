@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_cache_or_create.R
 \name{get_cache_or_create}
 \alias{get_cache_or_create}
-\title{checks if variable exists in enviroment and returns back or creates a new variable}
+\title{Checks if variable exists in environment and returns back or creates a new variable}
 \usage{
 get_cache_or_create(
   var,
@@ -27,7 +27,7 @@ get_cache_or_create(
 Unknown.  The return type from the param func or the existing variable in global enviroment.
 }
 \description{
-checks if variable exists in enviroment and returns back or creates a new variable
+Checks if variable exists in environment and returns back or creates a new variable
 }
 \examples{
 
@@ -49,5 +49,4 @@ df_2 <- get_cache_or_create(
                           "df_2",
                           function() data.frame(col_1 = NA_character_, col_2 = NA_integer_)
                           )
-
 }

@@ -13,15 +13,19 @@ coverage](https://codecov.io/gh/John-Piper/wrappr/branch/main/graph/badge.svg)](
 
 <!-- badges: end -->
 
-wrappr is a small collection of wrapper functions to help with the
-development of writing cleaner R code.
+wrappr is a collection of wrapper functions to use on other R functions
+to add extra functionality and maintain clean code.
 
-The helper functions in wrappr can help with setting temporarily working
-directories to help open files, using a only a file name, maintaining
-the current working directory. Messages can be print to the console
-before and after a function call to another function. Also wrappr can
-help speed up development time when using large data frames collected
-from file when running the same source code multipal times.
+Here is a biref description of some functionality wrappr has to offer:
+
+-   set a temporary working directory to work with a function that deals
+    with I/O and maintain the current working directory.
+
+-   Get an existing variable from the enviroment or create a new
+    variable if it does not exist. Great for loading big files once when
+    re-running development code.
+
+-   print a messages to the console before and after a function call.
 
 ## Installation
 

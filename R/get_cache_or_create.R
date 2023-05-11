@@ -1,4 +1,4 @@
-#' checks if variable exists in enviroment and returns back or creates a new variable
+#' Checks if variable exists in environment and returns back or creates a new variable
 #'
 #' @param var character.  The name of the variable to check in the global environment.
 #' @param func function.  A function that returns a value.
@@ -7,7 +7,7 @@
 #' @param warning_msg character.  Message sent to stop function if an error occurs.
 #'
 #' @return Unknown.  The return type from the param func or the existing variable in global enviroment.
-#' @export
+#'
 #'
 #' @examples
 #'
@@ -29,7 +29,7 @@
 #'                           "df_2",
 #'                           function() data.frame(col_1 = NA_character_, col_2 = NA_integer_)
 #'                           )
-#'
+#' @export
 get_cache_or_create <- function(
                                 var,
                                 func,

@@ -6,7 +6,6 @@
 #' @param err_msg character.  Message sent to stop function if an error occurs.
 #'
 #' @return Unknown.  The return type from the param func.
-#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -17,6 +16,7 @@
 #' get_data <- set_temp_wd(temp_wd, read.csv, file = "file.csv")
 #'
 #' }
+#' @export
 set_temp_wd <- function(temp_cwd,
                         func,
                         ...,

@@ -9,7 +9,6 @@
 #' @param print_return_var boolean.  The default is FALSE.  Prints the output from the called func using the print argument from param print_func.
 #'
 #' @return Unknown.  The return type from the param func.
-#' @export
 #'
 #' @examples
 #'
@@ -46,7 +45,7 @@
 #'          use_msg = "before",
 #'          print_return_var = FALSE
 #'          )
-#'
+#' @export
 msg_wrap <- function(func,
                      ...,
                      before_func_msg = "",

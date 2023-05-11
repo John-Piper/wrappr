@@ -70,5 +70,4 @@ msg_wrap((function(x) sum(x[x\%\%2 == 1])),
          use_msg = "before",
          print_return_var = FALSE
          )
-
 }

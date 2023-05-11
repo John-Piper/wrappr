@@ -57,6 +57,7 @@ iter_library <- function(package_names, continue_on_failed_install = FALSE) {
   if (length(package_names) == 0) {
 
     return(FALSE)
+
   }
 
   for (i in seq_along(package_names)) {

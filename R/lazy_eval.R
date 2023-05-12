@@ -1,41 +1,74 @@
-#' Delay a function call until you need to call it
+#' save and Delay a function call with the option to change the function and args when called
 #'
-#' @param func function.  A function that will be called when evoked later
-#' @param ... Additional arguments to be passed to the param func.
+#' @importFrom methods is
+#' @param ... Additional arguments to be passed to the param .f.
+#' @param .f function.  A function that will be called when needed.
 #'
-#' @return function
+#' @return function with same params plus an extra boolean param overwright_args set to FALSE.
 #'
 #' @examples
-#' \dontrun{
-#' # Setup to load a csv file
 #'
-#' load_file_two <- TRUE
+#' # perform simple calculations using the same data
+#' numbers <- c(1,2,3,4,5)
 #'
-#' csv_one <- lazy_eval(
-#'                      read.csv,
-#'                      file = "file/address/of/file_one.csv
-#'                     )
+#' func <- lazy_eval(numbers, .f = sum)
 #'
-#' csv_two <- lazy_eval(
-#'                      read.csv,
-#'                      file = "file/address/of/file_two.csv
-#'                     )
+#' sum_result <- func()
 #'
-#' data <- ifelse(load_file_two, csv_one(), csv_two())
-#' }
+#' max_result <- func(.f = max)
+#'
+#' mean_result <- func(.f = mean)
+#'
+#' range_result <- func(.f = function(...) { max(...) - min(...)})
+#'
+#' add_more_num_result <- func(4,5,6, NA, na.rm = TRUE)
+#'
+#' # overwrite_args set to TRUE will replace the original params for the function
+#' new_num_result <- func(4,5,6, NA, na.rm = TRUE, overwrite_args = TRUE)
 #'
 #' @export
-lazy_eval <- function(func, ...) {
+lazy_eval <- function(..., .f) {
 
-  return_func <- function() {
+  if (!("function" %in% is(.f))) {
 
-    return_value <- func(...)
+    stop("A function is required to be passed into the param `.f` in lazy_eval.")
 
-    return_value
+  }
+
+  current_func_args <- list(...)
+
+  func <- .f
+
+  return_func <- function(..., .f = NA, overwrite_args = FALSE) {
+
+    new_func_args <- list(...)
+
+    if (length(new_func_args) > 0) {
+
+      if (overwrite_args) {
+
+        current_func_args <- new_func_args
+
+      } else {
+
+        current_func_args <- c(current_func_args, new_func_args)
+
+      }
+
+    }
+
+    if("function" %in% is(.f)) {
+
+      func <- .f
+
+    }
+
+    return_result <- do.call(func, current_func_args)
+
+    return_result
 
   }
 
   return_func
 
 }
-

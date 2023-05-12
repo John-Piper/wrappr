@@ -2,38 +2,39 @@
 % Please edit documentation in R/lazy_eval.R
 \name{lazy_eval}
 \alias{lazy_eval}
-\title{Delay a function call until you need to call it}
+\title{save and Delay a function call with the option to change the function and args when called}
 \usage{
-lazy_eval(func, ...)
+lazy_eval(..., .f)
 }
 \arguments{
-\item{func}{function.  A function that will be called when evoked later}
+\item{...}{Additional arguments to be passed to the param .f.}
 
-\item{...}{Additional arguments to be passed to the param func.}
+\item{.f}{function.  A function that will be called when needed.}
 }
 \value{
-function
+function with same params plus an extra boolean param overwright_args set to FALSE.
 }
 \description{
-Delay a function call until you need to call it
+save and Delay a function call with the option to change the function and args when called
 }
 \examples{
-\dontrun{
-# Setup to load a csv file
 
-load_file_two <- TRUE
+# perform simple calculations using the same data
+numbers <- c(1,2,3,4,5)
 
-csv_one <- lazy_eval(
-                     read.csv,
-                     file = "file/address/of/file_one.csv
-                    )
+func <- lazy_eval(numbers, .f = sum)
 
-csv_two <- lazy_eval(
-                     read.csv,
-                     file = "file/address/of/file_two.csv
-                    )
+sum_result <- func()
 
-data <- ifelse(load_file_two, csv_one(), csv_two())
-}
+max_result <- func(.f = max)
+
+mean_result <- func(.f = mean)
+
+range_result <- func(.f = function(...) { max(...) - min(...)})
+
+add_more_num_result <- func(4,5,6, NA, na.rm = TRUE)
+
+# overwrite_args set to TRUE will replace the original params for the function
+new_num_result <- func(4,5,6, NA, na.rm = TRUE, overwrite_args = TRUE)
 
 }

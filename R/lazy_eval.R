@@ -86,7 +86,7 @@ lazy_eval <- function(..., .f) {
                                         "  Unexpected results can occur if the arguments used in the functions params in the param `.f` ",
                                         "use different data types.")
 
-      message(warning_msg_new_closure)
+      warning(warning_msg_new_closure)
 
       return(new_closure_func)
 

@@ -1,23 +1,6 @@
 library("wrappr")
 
 
-###############
-# Tests setup #
-###############
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #########
 # Tests #
 #########
@@ -138,7 +121,7 @@ test_that("Updating arguments and returing new closure will still call the expec
 
   lazy_func <- wrappr::lazy_eval(original_args, .f = original_func)
 
-  new_lazy_func <- lazy_func(new_args, return_new_closure = TRUE)
+  new_lazy_func <- suppressWarnings(lazy_func(new_args, return_new_closure = TRUE))
 
   expect_type(new_lazy_func, "closure")
 
@@ -204,7 +187,7 @@ test_that("New param arguments added to the closure function works as expected",
 
   expect_equal(test_results_two, expected_results_two)
 
-  test_result_three <- test_func(3,4, return_new_closure = TRUE)
+  test_result_three <- suppressWarnings(test_func(3,4, return_new_closure = TRUE))
 
   expected_result_three <- sum(c(values_for_test, 3,4), na.rm = TRUE)
 
@@ -213,11 +196,11 @@ test_that("New param arguments added to the closure function works as expected",
 })
 
 
-test_that("A message is printed to the console when the param `return_new_closure` is set to `TRUE` in the closure function", {
+test_that("A warning message is printed to the console when the param `return_new_closure` is set to `TRUE` in the closure function", {
 
   test_func <- wrappr::lazy_eval(1,2, .f = sum)
 
-  expect_message(test_func(1,2, return_new_closure = TRUE))
+  expect_warning(test_func(1,2, return_new_closure = TRUE))
 
 })
 
@@ -239,3 +222,4 @@ test_that("An anonymous can be used in lazy_eval", {
   expect_equal(test_result_two, expected_result_two)
 
 })
+

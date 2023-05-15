@@ -1,7 +1,8 @@
 #' Pass in a character Vector of Package Names to install and load into the Environment.
 #'
-#' @importFrom utils install.packages installed.packages
+#' @importFrom utils install.packages installed.packages available.packages
 #' @param package_names character vector.  Names of the packages to install and load into the Environment.
+#' @param lib_arg NULL or character.  Default to NULL.  Used for the lib param in install.packages
 #' @param continue_on_failed_install Boolean.  Stops R if a packages fails to install and parameter is set to FALSE.
 #'
 #' @return Boolean.  FALSE if no packages are passed into the library function else TRUE.
@@ -22,7 +23,7 @@
 #'
 #' }
 #' @export
-iter_library <- function(package_names, continue_on_failed_install = FALSE) {
+iter_library <- function(package_names, lib_arg = NULL, continue_on_failed_install = FALSE) {
 
   package_names_installed <- installed.packages()[, "Package"]
 
@@ -30,11 +31,18 @@ iter_library <- function(package_names, continue_on_failed_install = FALSE) {
 
   if (length(packages_to_install) > 0) {
 
+    available_packages <- rownames(available.packages())
+
     for (i in seq_along(packages_to_install)) {
 
       package_to_install <- packages_to_install[i]
 
-      install.packages(package_to_install)
+      # Only install packages that are on CRAN
+      if (package_to_install %in% available_packages) {
+
+        install.packages(package_to_install, lib = lib_arg)
+
+      }
 
       # Checks if new package has been installed.
       has_installed <- package_to_install %in% installed.packages()[, "Package"]

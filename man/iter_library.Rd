@@ -4,10 +4,12 @@
 \alias{iter_library}
 \title{Pass in a character Vector of Package Names to install and load into the Environment.}
 \usage{
-iter_library(package_names, continue_on_failed_install = FALSE)
+iter_library(package_names, lib_arg = NULL, continue_on_failed_install = FALSE)
 }
 \arguments{
 \item{package_names}{character vector.  Names of the packages to install and load into the Environment.}
+
+\item{lib_arg}{NULL or character.  Default to NULL.  Used for the lib param in install.packages}
 
 \item{continue_on_failed_install}{Boolean.  Stops R if a packages fails to install and parameter is set to FALSE.}
 }

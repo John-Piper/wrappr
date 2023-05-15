@@ -7,12 +7,12 @@
 lazy_eval(..., .f)
 }
 \arguments{
-\item{...}{Additional arguments to be passed to the param .f.}
+\item{...}{Additional arguments to be passed to the param .f.  Also in closure function returned.}
 
-\item{.f}{function.  A function that will be called when needed.}
+\item{.f}{function.  A function that will be called when needed.  Also in closure function returned.}
 }
 \value{
-function with same params plus an extra boolean param overwright_args set to FALSE.
+closure function with same params plus an extra boolean param overwright_args set to FALSE.
 }
 \description{
 save and Delay a function call with the option to change the function and args when called

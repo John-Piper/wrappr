@@ -1,10 +1,10 @@
 #' save and Delay a function call with the option to change the function and args when called
 #'
 #' @importFrom methods is
-#' @param ... Additional arguments to be passed to the param .f.
-#' @param .f function.  A function that will be called when needed.
+#' @param ... Additional arguments to be passed to the param .f.  Also in closure function returned.
+#' @param .f function.  A function that will be called when needed.  Also in closure function returned.
 #'
-#' @return function with same params plus an extra boolean param overwright_args set to FALSE.
+#' @return closure function with same params plus an extra boolean param overwright_args set to FALSE.
 #'
 #' @examples
 #'
@@ -39,7 +39,7 @@ lazy_eval <- function(..., .f) {
 
   func <- .f
 
-  return_func <- function(..., .f = NA, overwrite_args = FALSE) {
+  return_func <- function(..., .f = NA, overwrite_args = FALSE, return_new_closure = FALSE) {
 
     new_func_args <- list(...)
 
@@ -60,6 +60,35 @@ lazy_eval <- function(..., .f) {
     if("function" %in% is(.f)) {
 
       func <- .f
+
+    } else if(!is.na(.f)) {
+
+      current_function_name <- deparse(func)
+
+      warning_msg_non_func_arg <- paste0(
+                            "A function was not passed into the closure function param `.f`",
+                            "  The original function `", current_function_name, "` that was used ",
+                            "in lazy_eval function call has been used instead."
+                            )
+
+      warning(warning_msg_non_func_arg, call. = FALSE)
+
+    }
+
+    if (return_new_closure) {
+
+      unlisted_func_args <- unlist(current_func_args, recursive = FALSE)
+
+      new_closure_func <- wrappr::lazy_eval(unlisted_func_args, .f = func)
+
+      warning_msg_new_closure <- paste0("Please be careful returning a new closure function in the current ",
+                                        "closure function when using the argument `TRUE` for the param `return_new_closure`.",
+                                        "  Unexpected results can occur if the arguments used in the functions params in the param `.f` ",
+                                        "use different data types.")
+
+      message(warning_msg_new_closure)
+
+      return(new_closure_func)
 
     }
 

@@ -53,7 +53,8 @@ add functionality
 ``` r
 library(wrappr)
 
-#-------------------------------------------------------------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------------------------------------
 
 # To install and load in multipal packages
 
@@ -65,7 +66,7 @@ packages_to_use <- c("consolechoice", "readxl", "writexl")
 wrappr::iter_library(packages_to_use)
 
 
-#------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------
 
 # Set up a function closure with a function and arguments set up to use later in the code
 
@@ -92,11 +93,13 @@ df_example_sheet <- excel_file_loader()
 df_another_sheet <- excel_file_loader(sheet = "another_sheet")
 
 
-#-------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------
 
 # assign to a variable using a value from an existing variable from the enviroment or create a new value
 
-# This example code will be helpful to use when developing code and you require loading a big data file into the environment
+# This example code will be helpful to use when developing code
+# and you require loading a big data file into the environment.
+
 # The read_excel function will only load once if the variable is still in the enviroment scope
 
 df_example_sheet <- wrappr::get_cache_or_create(
@@ -107,7 +110,7 @@ df_example_sheet <- wrappr::get_cache_or_create(
                                                 )
 
 
-#-------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------
 
 # load and save a file using a temporary working directory to keep the existing working directory
 
@@ -131,7 +134,7 @@ wrappr::set_temp_wd(
                     )
                     
 
-#-------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------
 
 # write a message to the console before and after a function call saving the output to a variable
 
@@ -144,6 +147,6 @@ output_df <- wrappr::msg_wrap(
                               )
 
 
-#-------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------
 
 ```

@@ -1,10 +1,11 @@
 Package: wrappr
-Title: Easy to use helper wrapper functions
+Title: Helper and wrapper functions 
 Version: 0.1.0
-Authors@R: 
-    person("John", "Piper", , "john.piper.using.r@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+    person("John", "Piper", email = "john.piper.using.r@gmail.com", role = c("aut", "cre"),
+    comment = c(ORCID = "0009-0000-6003-7671"))
+    )
+Description: A collection of helper and wrapper functions to assist with writing clean dry code.   
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -14,3 +15,4 @@ Suggests:
 Config/testthat/edition: 3
 Imports:
   methods
+

@@ -63,7 +63,25 @@ lazy_eval <- function(..., .f) {
 
       } else {
 
-        current_func_args <- c(current_func_args, new_func_args)
+        names_of_new_func_args <- names(new_func_args)
+
+        for (name in names_of_new_func_args) {
+
+          if (name %in% names(current_func_args)) {
+
+            current_func_args[[name]] <- new_func_args[[name]]
+
+            new_func_args[[name]] <- NULL
+
+          }
+
+        }
+
+        if (length(new_func_args) > 0 ) {
+
+          current_func_args <- c(current_func_args, new_func_args)
+
+        }
 
       }
 

@@ -13,10 +13,10 @@ coverage](https://codecov.io/gh/John-Piper/wrappr/branch/main/graph/badge.svg)](
 
 <!-- badges: end -->
 
-wrappr is a collection of wrapper functions to use on other R functions
-to add extra functionality and support cleaner code.
+wrappr is a collection of wrapper and helper functions that can add
+extra functionality to other functions and support cleaner dry code.
 
-Here is a biref description of some functionality the wrappr package has
+Here is a brief description of some functionality the wrappr package has
 to offer:
 
 -   set up functions that can be called later keeping a copy of the
@@ -54,7 +54,7 @@ add functionality
 library(wrappr)
 
 
-#-----------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
 
 # To install and load in multipal packages
 
@@ -66,7 +66,7 @@ packages_to_use <- c("consolechoice", "readxl", "writexl")
 wrappr::iter_library(packages_to_use)
 
 
-#-----------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
 
 # Set up a function closure with a function and arguments set up to use later in the code
 
@@ -93,7 +93,7 @@ df_example_sheet <- excel_file_loader()
 df_another_sheet <- excel_file_loader(sheet = "another_sheet")
 
 
-#-----------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
 
 # assign to a variable using a value from an existing variable from the enviroment or create a new value
 
@@ -110,7 +110,7 @@ df_example_sheet <- wrappr::get_cache_or_create(
                                                 )
 
 
-#-----------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
 
 # load and save a file using a temporary working directory to keep the existing working directory
 
@@ -134,19 +134,19 @@ wrappr::set_temp_wd(
                     )
                     
 
-#-----------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
 
 # write a message to the console before and after a function call saving the output to a variable
 
 output_df <- wrappr::msg_wrap(
                               func = read_excel,
-                              path = "path/to/example_workbook.xlsx,
+                              path = "path/to/example_workbook.xlsx",
                               sheet = "example_sheet",
                               before_func_msg = "Loading the data.",
                               after_func_msg = "The data has loaded..",
                               )
 
 
-#-----------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
 
 ```

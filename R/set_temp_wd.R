@@ -20,7 +20,7 @@
 set_temp_wd <- function(temp_cwd,
                         func,
                         ...,
-                        err_msg = "An error has occured in the function use_temp_wd") {
+                        err_msg = "An error has occured in the function set_temp_wd") {
 
   current_wd <- getwd()
 

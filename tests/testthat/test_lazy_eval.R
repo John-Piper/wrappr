@@ -187,20 +187,11 @@ test_that("New param arguments added to the closure function works as expected",
 
   expect_equal(test_results_two, expected_results_two)
 
-  test_result_three <- suppressWarnings(test_func(3,4, return_new_closure = TRUE))
+  test_result_three <- suppressWarnings(test_func(3,4, na.rm = TRUE, return_new_closure = TRUE))
 
   expected_result_three <- sum(c(values_for_test, 3,4), na.rm = TRUE)
 
-  expect_equal(test_result_three(na.rm = TRUE), expected_result_three)
-
-})
-
-
-test_that("A warning message is printed to the console when the param `return_new_closure` is set to `TRUE` in the closure function", {
-
-  test_func <- wrappr::lazy_eval(1,2, .f = sum)
-
-  expect_warning(test_func(1,2, return_new_closure = TRUE))
+  expect_equal(test_result_three(), expected_result_three)
 
 })
 

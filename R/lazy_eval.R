@@ -37,6 +37,18 @@ lazy_eval <- function(..., .f) {
 
   current_func_args <- list(...)
 
+  # Check if a list has been passed into the function so it can unlist the top list
+  # without removing the original data types.  Required if lazy_eval called via recursion.
+  if (length(current_func_args) > 0) {
+
+    if (is.list(current_func_args[[1]])) {
+
+      current_func_args <- current_func_args[[1]]
+
+    }
+
+  }
+
   func <- .f
 
   return_func <- function(..., .f = NA, overwrite_args = FALSE, return_new_closure = FALSE) {
@@ -77,24 +89,11 @@ lazy_eval <- function(..., .f) {
 
     if (return_new_closure) {
 
-      unlisted_func_args <- unlist(current_func_args, recursive = FALSE)
-
-      new_closure_func <- wrappr::lazy_eval(unlisted_func_args, .f = func)
-
-      warning_msg_new_closure <- paste0("Please be careful returning a new closure function in the current ",
-                                        "closure function when using the argument `TRUE` for the param `return_new_closure`.",
-                                        "  Unexpected results can occur if the arguments used in the functions params in the param `.f` ",
-                                        "use different data types.")
-
-      warning(warning_msg_new_closure)
-
-      return(new_closure_func)
+      return(wrappr::lazy_eval(current_func_args, .f = func))
 
     }
 
-    return_result <- do.call(func, current_func_args)
-
-    return_result
+    return(do.call(func, current_func_args))
 
   }
 

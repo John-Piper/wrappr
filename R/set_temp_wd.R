@@ -10,7 +10,6 @@
 #' @examples
 #' \dontrun{
 #'
-#' # open a csv file using a temp working directory
 #' temp_wd <- "example/folder/address/to/change"
 #'
 #' get_data <- set_temp_wd(temp_wd, read.csv, file = "file.csv")
@@ -24,6 +23,8 @@ set_temp_wd <- function(temp_cwd,
 
   current_wd <- getwd()
 
+  on.exit(setwd(current_wd))
+
   tryCatch({
 
     setwd(temp_cwd)
@@ -33,8 +34,6 @@ set_temp_wd <- function(temp_cwd,
   }, error = function(e) {
 
     warning(e)
-
-    setwd(current_wd)
 
     stop(err_msg, call. = FALSE)
 

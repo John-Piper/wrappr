@@ -31,22 +31,22 @@ Checks if variable exists in environment and returns back or creates a new varia
 }
 \examples{
 
-# A simple created data.frame with 2 columns
-
 df <- data.frame(col_1 = c("a","b","c"), col_2 = c(1,2,3))
 
-# check if the variable `df` is already created and return the current value
-# in the variable saved in the global environment or create an empty data frame
+create_blank_df <- function() {
 
-df <- get_cache_or_create(
+    data.frame(col_1 = NA_character_, col_2 = NA_integer_)
+
+    }
+
+df_1 <- get_cache_or_create(
                           "df",
-                          function() data.frame(col_1 = NA_Character_, col_2 = NA_integer_)
+                          create_blank_df
                           )
-
-# same check for df_2.  empty data frame returned because df_2 is not in global environment
 
 df_2 <- get_cache_or_create(
                           "df_2",
-                          function() data.frame(col_1 = NA_character_, col_2 = NA_integer_)
+                          create_blank_df
                           )
+
 }

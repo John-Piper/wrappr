@@ -6,8 +6,6 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/John-Piper/wrappr/workflows/R-CMD-check/badge.svg)](https://github.com/John-Piper/wrappr/actions)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/wrappr)](https://CRAN.R-project.org/package=wrappr)
 [![Codecov test
 coverage](https://codecov.io/gh/John-Piper/wrappr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/John-Piper/wrappr?branch=main)
 
@@ -32,9 +30,6 @@ to offer:
 
 -   print a messages to the console before and after a function call.
 
--   Check for new packages to install and load in packages from a
-    character vector.
-
 ## Installation
 
 You can install the development version of wrappr from
@@ -54,27 +49,13 @@ add functionality
 library(wrappr)
 
 
-#-----------------------------------------------------------------------------------------------------
-
-# To install and load in multipal packages
-
-# Packages that are not on cran will not be installed
-# Packages already on the host computer will skip installation
-
-packages_to_use <- c("consolechoice", "readxl", "writexl")
-
-wrappr::iter_library(packages_to_use)
-
-
-#-----------------------------------------------------------------------------------------------------
-
 # Set up a function closure with a function and arguments set up to use later in the code
 
-excel_file_loader <- wrappr::lazy_eval(
-                                       path = "some/example/path/file_name.xlsx",
-                                       sheet = "example_sheet",
-                                       .f = read_excel
-                                        )
+csv_file_loader <- wrappr::lazy_eval(
+                                     file = "some/example/path/file_name_one.csv",
+                                     sep = "|,
+                                     .f = read.csv
+                                     )
 
 
 # lots of code here
@@ -86,14 +67,15 @@ excel_file_loader <- wrappr::lazy_eval(
 
 # call the function when it is needed in the code
 
-df_example_sheet <- excel_file_loader()
+df_one <- excel_file_loader()
 
 # use the same function closure to load the same file but a different sheet
 
-df_another_sheet <- excel_file_loader(sheet = "another_sheet")
+df_two <- csv_file_loader(file = file = "some/example/path/file_name_two.csv")
 
 
 #-----------------------------------------------------------------------------------------------------
+
 
 # assign to a variable using a value from an existing variable from the enviroment or create a new value
 
@@ -102,23 +84,22 @@ df_another_sheet <- excel_file_loader(sheet = "another_sheet")
 
 # The read_excel function will only load once if the variable is still in the enviroment scope
 
-df_example_sheet <- wrappr::get_cache_or_create(
-                                                var = "df_example_sheet",
-                                                func = read_excel,
-                                                path = "some/example/path/file_name.xlsx",
-                                                sheet = "example_sheet"
-                                                )
+df_big_file <- wrappr::get_cache_or_create(
+                                           var = "df_big_file",
+                                           func = read.csv,
+                                           file = "some/example/path/file_name.csv"
+                                          )
 
 
 #-----------------------------------------------------------------------------------------------------
+
 
 # load and save a file using a temporary working directory to keep the existing working directory
 
 df_example <- wrappr::set_temp_wd(
                     temp_cwd = "temp_wd/load/folder_one/",
-                    func = read_excel,
-                    path = "example_workbook.xlsx",
-                    sheet = "example_sheet"
+                    func = read.csv,
+                    file = "example_file.csv"
                     )
 
 
@@ -128,24 +109,24 @@ df_example <- wrappr::set_temp_wd(
 
 wrappr::set_temp_wd(
                     temp_cwd = "temp_wd/save/folder_one/",
-                    func = write_xlsx,
-                    x = df_example,
-                    path = "df_example.xlsx"
+                    func = write.csv,
+                    df_example,
+                    file = "df_example.csv"
                     )
                     
 
 #-----------------------------------------------------------------------------------------------------
 
+
 # write a message to the console before and after a function call saving the output to a variable
 
 output_df <- wrappr::msg_wrap(
-                              func = read_excel,
-                              path = "path/to/example_workbook.xlsx",
-                              sheet = "example_sheet",
+                              func = read.csv,
+                              path = "path/to/example_workbook.csv",
                               before_func_msg = "Loading the data.",
                               after_func_msg = "The data has loaded..",
                               )
-
+                              
 
 #-----------------------------------------------------------------------------------------------------
 

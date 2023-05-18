@@ -4,11 +4,10 @@
 #' @param ... Additional arguments to be passed to the param .f.  Also in closure function returned.
 #' @param .f function.  A function that will be called when needed.  Also in closure function returned.
 #'
-#' @return closure function with same function params plus an extra boolean param overwright_args set to FALSE.
+#' @return closure function with same function params plus param overwrite_args boolean and return_new_closure boolean.
 #'
 #' @examples
 #'
-#' # perform simple calculations using the same data
 #' numbers <- c(1,2,3,4,5)
 #'
 #' func <- lazy_eval(numbers, .f = sum)
@@ -23,8 +22,9 @@
 #'
 #' add_more_num_result <- func(4,5,6, NA, na.rm = TRUE)
 #'
-#' # overwrite_args set to TRUE will replace the original params for the function
-#' new_num_result <- func(4,5,6, NA, na.rm = TRUE, overwrite_args = TRUE)
+#' updated_func <- func(na.rm = TRUE, return_new_closure = TRUE)
+#'
+#' updated_func_result <- updated_func()
 #'
 #' @export
 lazy_eval <- function(..., .f) {

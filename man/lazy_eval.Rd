@@ -12,14 +12,13 @@ lazy_eval(..., .f)
 \item{.f}{function.  A function that will be called when needed.  Also in closure function returned.}
 }
 \value{
-closure function with same function params plus an extra boolean param overwright_args set to FALSE.
+closure function with same function params plus param overwrite_args boolean and return_new_closure boolean.
 }
 \description{
 save and Delay a function call with the option to change the function and args when called
 }
 \examples{
 
-# perform simple calculations using the same data
 numbers <- c(1,2,3,4,5)
 
 func <- lazy_eval(numbers, .f = sum)
@@ -34,7 +33,8 @@ range_result <- func(.f = function(...) { max(...) - min(...)})
 
 add_more_num_result <- func(4,5,6, NA, na.rm = TRUE)
 
-# overwrite_args set to TRUE will replace the original params for the function
-new_num_result <- func(4,5,6, NA, na.rm = TRUE, overwrite_args = TRUE)
+updated_func <- func(na.rm = TRUE, return_new_closure = TRUE)
+
+updated_func_result <- updated_func()
 
 }

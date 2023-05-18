@@ -90,3 +90,19 @@ test_that("Expect error when in valid file path passed into function", {
                                    file = file_name_to_load_in_test_folder_comma_sep_with_header))
 
 })
+
+
+test_that("Expect the cwd is still the same as before the function call when an error occurs within the function", {
+
+  expect_error(SuppressWarning(wrappr::set_temp_wd(temp_cwd = test_working_directory,
+                      func = read.csv,
+                      file = "not_a_file_name.csv")))
+
+  cwd_after_function <- getwd()
+
+  expect_equal(cwd_before_tests, cwd_after_function)
+
+  setwd(cwd_before_tests)
+
+
+})

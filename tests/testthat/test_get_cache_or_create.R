@@ -94,3 +94,17 @@ test_that("Expect the a different data framw to load from read.csv the second ti
 })
 
 
+test_that("An error occurs when the inner function fails", {
+
+  expect_error(
+
+    suppressWarnings({
+
+      get_cache_or_create("a", read.csv, "incorrect_file_path.csc")
+
+    })
+
+  )
+
+})
+

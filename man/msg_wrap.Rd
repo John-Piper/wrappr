@@ -17,7 +17,7 @@ msg_wrap(
 \arguments{
 \item{func}{function.}
 
-\item{...}{Additional arguments to be passed to the param func.}
+\item{...}{Additional arguments to be passed into the param func.}
 
 \item{before_func_msg}{character.}
 
@@ -37,11 +37,8 @@ Wraps a message before and/or after a function
 }
 \examples{
 
-library(wrappr)
-
 numbers <- c(1,2,3,4,5)
 
-# wrapping a message before and after the sum function
 answer <- msg_wrap(
                    sum,
                    numbers,
@@ -51,7 +48,6 @@ answer <- msg_wrap(
 
 numbers_with_na <- c(1,2,3,NA,5)
 
-# Summing with message only at start and NA removed
 answer_na_removed <- msg_wrap(
                               sum,
                               numbers,
@@ -60,14 +56,13 @@ answer_na_removed <- msg_wrap(
                               use_msg = "before"
                               )
 
-# printing the return value from func using an anonymous function after the before message
-
 numbers_to_sum <- c(10,20,30)
 
 msg_wrap((function(x) sum(x[x\%\%2 == 1])),
          x = numbers_to_sum,
          before_func_msg = "Result from sum of odd numbers",
          use_msg = "before",
-         print_return_var = FALSE
+         print_return_var = TRUE
          )
+
 }

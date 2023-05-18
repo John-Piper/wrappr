@@ -29,7 +29,6 @@ Sets a temporary working directory for a function argument
 \examples{
 \dontrun{
 
-# open a csv file using a temp working directory
 temp_wd <- "example/folder/address/to/change"
 
 get_data <- set_temp_wd(temp_wd, read.csv, file = "file.csv")

@@ -17,18 +17,18 @@ extra functionality to other functions and support cleaner dry code.
 Here is a brief description of some functionality the wrappr package has
 to offer:
 
--   set up functions that can be called later keeping a copy of the
+-   Set up functions that can be called later keeping a copy of the
     arguments. Flexibility to update or add arguments and change the
     function to call.  
 
--   set a temporary working directory to work with a function that deals
+-   Set a temporary working directory to work with a function that deals
     with I/O to maintain the current working directory.
 
 -   Get an existing variable from the environment or create a new
     variable if it does not exist. Great for loading large files once
     when re-running development code.
 
--   print a messages to the console before and after a function call.
+-   Print a messages to the console before and after a function call.
 
 ## Installation
 
@@ -67,11 +67,11 @@ csv_file_loader <- wrappr::lazy_eval(
 
 # call the function when it is needed in the code
 
-df_one <- excel_file_loader()
+df_one <- csv_file_loader()
 
 # use the same function closure to load the same file but a different sheet
 
-df_two <- csv_file_loader(file = file = "some/example/path/file_name_two.csv")
+df_two <- csv_file_loader(file = "some/example/path/file_name_two.csv")
 
 
 #-----------------------------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ df_two <- csv_file_loader(file = file = "some/example/path/file_name_two.csv")
 # This example code will be helpful to use when developing code
 # and you require loading a big data file into the environment.
 
-# The read_excel function will only load once if the variable is still in the enviroment scope
+# The read.csv function will only load the data if the variable is not in the enviroment scope
 
 df_big_file <- wrappr::get_cache_or_create(
                                            var = "df_big_file",

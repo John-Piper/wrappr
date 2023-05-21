@@ -12,7 +12,7 @@ lazy_eval(..., .f)
 \item{.f}{function.  A function that will be called when needed.  Also in closure function returned.}
 }
 \value{
-closure function with same function params plus param overwrite_args boolean and return_new_closure boolean.
+closure function with same param names plus the param names overwrite_args boolean and return_new_closure boolean.
 }
 \description{
 save and Delay a function call with the option to change the function and args when called

@@ -4,7 +4,7 @@
 #' @param ... Additional arguments to be passed to the param .f.  Also in closure function returned.
 #' @param .f function.  A function that will be called when needed.  Also in closure function returned.
 #'
-#' @return closure function with same function params plus param overwrite_args boolean and return_new_closure boolean.
+#' @return closure function with same param names plus the param names overwrite_args boolean and return_new_closure boolean.
 #'
 #' @examples
 #'

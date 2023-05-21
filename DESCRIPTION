@@ -1,5 +1,5 @@
 Package: wrappr
-Title: Helper And Wrapper Functions 
+Title: Helper and Wrapper Functions 
 Version: 0.1.0
 Authors@R: c(
     person("John", "Piper", email = "john.piper.using.r@gmail.com", role = c("aut", "cre"),

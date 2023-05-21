@@ -1,4 +1,4 @@
-#' Sets a temporary working directory for a function argument
+#' Sets a temporary working directory within the function scope
 #'
 #' @param temp_cwd character.  Folder path to temporarily set the working directory
 #' @param func function.  A function that used a directory path

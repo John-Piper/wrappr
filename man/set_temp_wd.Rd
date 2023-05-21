@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_temp_wd.R
 \name{set_temp_wd}
 \alias{set_temp_wd}
-\title{Sets a temporary working directory for a function argument}
+\title{Sets a temporary working directory within the function scope}
 \usage{
 set_temp_wd(
   temp_cwd,
@@ -24,7 +24,7 @@ set_temp_wd(
 Unknown.  The return type from the param func.
 }
 \description{
-Sets a temporary working directory for a function argument
+Sets a temporary working directory within the function scope
 }
 \examples{
 \dontrun{

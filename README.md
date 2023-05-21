@@ -144,7 +144,7 @@ load_data_func <- wrappr::lazy_eval(
                                    )
 
 load_data_func_temp_wd <- wrappr::lazy_eval(
-  temp_cwd = "temp/working/dir,
+  temp_cwd = "temp/working/dir",
   func = load_data_func,
   .f = wrappr::set_temp_wd
 )
@@ -170,7 +170,7 @@ load_data_func_pipe <- wrappr::lazy_eval(
                                     .f = read.csv
                                         ) %>%
                       wrappr::lazy_eval(
-                                    temp_cwd = working_directory,
+                                    temp_cwd = "temp/working/dir",
                                     func = .,
                                     .f = wrappr::set_temp_wd
                                        ) %>%

@@ -1,11 +1,14 @@
 Package: wrappr
-Title: Helper and Wrapper Functions 
+Title: A Collection of Helper and Wrapper Functions 
 Version: 0.1.0
 Authors@R: c(
     person("John", "Piper", email = "john.piper.using.r@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0009-0000-6003-7671"))
     )
-Description: A collection of helper and wrapper functions to assist with writing clean dry code.   
+Description: Helper functions to easily add functionality to functions.  The package can 
+  assign functions to have an lazy evaluation allowing you to save and update the 
+  arguments before and after each function call.  You can also set a 
+  temporary working directory and wrap console messages around other functions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -8,7 +8,8 @@ get_cache_or_create(
   var,
   func,
   ...,
-  envir_arg = .GlobalEnv,
+  exists_func_args = NA,
+  get_func_args = NA,
   warning_msg = NA_character_
 )
 }
@@ -19,7 +20,9 @@ get_cache_or_create(
 
 \item{...}{Additional arguments to be passed to the param func.}
 
-\item{envir_arg}{environment.  Specify an environment to look in to check and collect objects.}
+\item{exists_func_args}{list.  A list of arguments to use in base::exists.}
+
+\item{get_func_args}{list.  A list of arguments to use in bass::get.}
 
 \item{warning_msg}{character.  Message sent to stop function if an error occurs.}
 }
@@ -30,7 +33,7 @@ Unknown.  The return type from the param func or the existing variable in global
 Checks if variable exists in environment and returns back or creates a new variable
 }
 \examples{
-
+\dontrun{
 df <- data.frame(col_1 = c("a","b","c"), col_2 = c(1,2,3))
 
 create_blank_df <- function() {
@@ -48,5 +51,5 @@ df_2 <- get_cache_or_create(
                           "df_2",
                           create_blank_df
                           )
-
+}
 }

@@ -34,7 +34,8 @@ test_that("Expect the original version of the dataframe in the created enviromen
                                          func = read.csv,
                                          file = file_name_to_load_in_test_folder_comma_sep_with_header,
                                          fileEncoding = "UTF-8-BOM",
-                                         envir_arg = test_env
+                                         exists_func_args = list(envir = test_env),
+                                         get_func_args = list(envir = test_env)
                                          )
 
   expect_s3_class(test_env$original_df, "data.frame")
@@ -43,7 +44,8 @@ test_that("Expect the original version of the dataframe in the created enviromen
                                          func = read.csv,
                                          file = file_name_to_load_in_test_folder_not_comma_sep_without_header,
                                          fileEncoding = "UTF-8-BOM",
-                                         envir_arg = test_env
+                                         exists_func_args = list(envir = test_env),
+                                         get_func_args = list(envir = test_env)
                                          )
 
   expect_identical(test_env$original_df, test_env$test_df)
@@ -66,7 +68,8 @@ test_that("Expect the a different data framw to load from read.csv the second ti
                                                       func = read.csv,
                                                       file = file_name_to_load_in_test_folder_comma_sep_with_header,
                                                       fileEncoding = "UTF-8-BOM",
-                                                      envir_arg = test_env
+                                                      exists_func_args = list(envir = test_env),
+                                                      get_func_args = list(envir = test_env)
   )
 
   rm("original_df", envir = test_env)
@@ -75,14 +78,16 @@ test_that("Expect the a different data framw to load from read.csv the second ti
                                                   func = read.csv,
                                                   file = file_name_to_load_in_test_folder_not_comma_sep_without_header,
                                                   fileEncoding = "UTF-8-BOM",
-                                                  envir_arg = test_env
+                                                  exists_func_args = list(envir = test_env),
+                                                  get_func_args = list(envir = test_env)
   )
 
   test_env$original_df <- wrappr::get_cache_or_create("original_df",
                                                       func = read.csv,
                                                       file = file_name_to_load_in_test_folder_comma_sep_with_header,
                                                       fileEncoding = "UTF-8-BOM",
-                                                      envir_arg = test_env
+                                                      exists_func_args = list(envir = test_env),
+                                                      get_func_args = list(envir = test_env)
   )
 
   expect_false(identical(test_env$original_df, test_env$test_df))

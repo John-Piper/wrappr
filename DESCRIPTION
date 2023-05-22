@@ -7,8 +7,8 @@ Authors@R: c(
     )
 Description: Helper functions to easily add functionality to functions.  The package can 
   assign functions to have an lazy evaluation allowing you to save and update the 
-  arguments before and after each function call.  You can also set a 
-  temporary working directory and wrap console messages around other functions.
+  arguments before and after each function call.  You can set a temporary working 
+  directory within functions and wrap console messages around other functions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

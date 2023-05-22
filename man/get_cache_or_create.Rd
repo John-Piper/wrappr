@@ -24,7 +24,7 @@ get_cache_or_create(
 \item{warning_msg}{character.  Message sent to stop function if an error occurs.}
 }
 \value{
-Unknown.  The return type from the param func or the existing variable in global enviroment.
+Unknown.  The return type from the param func or the existing variable in global environment.
 }
 \description{
 Checks if variable exists in environment and returns back or creates a new variable

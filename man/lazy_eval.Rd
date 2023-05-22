@@ -2,7 +2,7 @@
 % Please edit documentation in R/lazy_eval.R
 \name{lazy_eval}
 \alias{lazy_eval}
-\title{save and Delay a function call with the option to change the function and args when called}
+\title{save and Delay a function call with the option to change the function and arguments when called}
 \usage{
 lazy_eval(..., .f)
 }
@@ -12,10 +12,10 @@ lazy_eval(..., .f)
 \item{.f}{function.  A function that will be called when needed.  Also in closure function returned.}
 }
 \value{
-closure function with same param names plus the param names overwrite_args boolean and return_new_closure boolean.
+closure function with same param names plus the param names overwrite_args Boolean and return_new_closure Boolean.
 }
 \description{
-save and Delay a function call with the option to change the function and args when called
+save and Delay a function call with the option to change the function and arguments when called
 }
 \examples{
 

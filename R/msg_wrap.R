@@ -6,7 +6,7 @@
 #' @param after_func_msg character.
 #' @param print_func function.  The default is print.  Can use related function like message.
 #' @param use_msg character.  The default is "both".  Selects which messages to print in the function.  Use `before`, `after`, `both` or `none`.
-#' @param print_return_var boolean.  The default is FALSE.  Prints the output from the called func using the print argument from param print_func.
+#' @param print_return_var Boolean.  The default is FALSE.  Prints the output from the called func using the print argument from param print_func.
 #'
 #' @return Unknown.  The return type from the param func.
 #'

@@ -27,7 +27,7 @@ msg_wrap(
 
 \item{use_msg}{character.  The default is "both".  Selects which messages to print in the function.  Use \code{before}, \code{after}, \code{both} or \code{none}.}
 
-\item{print_return_var}{boolean.  The default is FALSE.  Prints the output from the called func using the print argument from param print_func.}
+\item{print_return_var}{Boolean.  The default is FALSE.  Prints the output from the called func using the print argument from param print_func.}
 }
 \value{
 Unknown.  The return type from the param func.

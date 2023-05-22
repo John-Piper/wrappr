@@ -6,7 +6,7 @@
 #' @param envir_arg environment.  Specify an environment to look in to check and collect objects.
 #' @param warning_msg character.  Message sent to stop function if an error occurs.
 #'
-#' @return Unknown.  The return type from the param func or the existing variable in global enviroment.
+#' @return Unknown.  The return type from the param func or the existing variable in global environment.
 #'
 #' @examples
 #'

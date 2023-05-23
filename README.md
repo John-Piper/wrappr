@@ -6,8 +6,16 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/John-Piper/wrappr/workflows/R-CMD-check/badge.svg)](https://github.com/John-Piper/wrappr/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/wrappr)](https://CRAN.R-project.org/package=wrappr)
 [![Codecov test
 coverage](https://codecov.io/gh/John-Piper/wrappr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/John-Piper/wrappr?branch=main)
+[![Downloads
+(monthly)](https://cranlogs.r-pkg.org/badges/wrappr?color=brightgreen)](https://www.r-pkg.org/pkg/wrappr)
+[![Downloads
+(total)](https://cranlogs.r-pkg.org/badges/grand-total/wrappr?color=brightgreen)](https://www.r-pkg.org/pkg/wrappr)
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <!-- badges: end -->
 

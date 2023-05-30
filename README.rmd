@@ -62,7 +62,7 @@ library(wrappr)
 
 csv_file_loader <- wrappr::lazy_eval(
                                      file = "some/example/path/file_name_one.csv",
-                                     sep = "|,
+                                     sep = "|",
                                      .f = read.csv
                                      )
 
